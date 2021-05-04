@@ -22,12 +22,14 @@ const SponsorsList: FunctionComponent<Props> = () => {
     />
   )
 
-  if (
-    !goldLogos.length &&
-    !silverLogos.length &&
-    !bronzeLogos.length &&
-    !otherLogos.length
-  ) {
+  const noLogos = !(
+    goldLogos.length +
+    silverLogos.length +
+    bronzeLogos.length +
+    otherLogos.length
+  )
+
+  if (noLogos) {
     return null
   }
 
