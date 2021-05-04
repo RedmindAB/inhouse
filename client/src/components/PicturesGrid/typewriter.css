@@ -1,0 +1,27 @@
+.typewriter-wrapper {
+  font-family: 'Supria Sans Condensed Bold';
+  font-size: 5vw;
+  letter-spacing: 0.1vw;
+  line-height: 4vw;
+  color: var(--foreground);
+}
+
+@keyframes cursorAnimation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.typewriter-cursor {
+  font-family: 'Supria Sans Condensed Bold';
+  font-size: 6vw;
+  letter-spacing: 0.1vw;
+  line-height: 5vw;
+  color: var(--foreground);
+
+  animation: cursorAnimation 0.5s forwards alternate infinite;
+}

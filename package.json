@@ -1,0 +1,32 @@
+{
+  "name": "inhouse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Inhouse monorepo",
+  "author": "Sascha Ringström",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "build:client": "cd client && npm install && npm run build",
+    "build:functions": "netlify-lambda build functions/src --config ./webpack.functions.js",
+    "build": "npm run build:client && npm run build:functions",
+    "ts-check": "tsc --noEmit --lib ES2015 ./src/*.ts",
+    "serve": "netlify-lambda serve functions/src --config ./webpack.functions.js"
+  },
+  "license": "0BSD",
+  "dependencies": {
+    "lambda-multipart-parser": "^1.0.0",
+    "mailchimp-api-v3": "^1.14.0",
+    "node-mailjet": "^3.3.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@types/aws-lambda": "^8.10.71",
+    "@types/node": "^14.14.22",
+    "@types/node-mailjet": "^3.3.4",
+    "netlify-lambda": "^2.0.3",
+    "typescript": "^4.1.3"
+  }
+}

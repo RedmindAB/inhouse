@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Supria Sans Light';
+  src: url('../fonts/Supria\ Sans\ Light.otf');
+}
+
+@font-face {
+  font-family: 'Supria Sans Condensed Light';
+  src: url('../fonts/Supria\ Sans\ Condensed\ Light.otf');
+}
+
+@font-face {
+  font-family: 'Supria Sans Condensed Bold';
+  src: url('../fonts/Supria\ Sans\ Condensed\ Bold.otf');
+}
+
+@font-face {
+  font-family: 'Tide Sans 300';
+  src: url('../fonts/Tide\ Sans\ 300\ Lil\ Kahuna.otf');
+}
+
+@font-face {
+  font-family: 'Tide Sans 600';
+  src: url('../fonts/Tide\ Sans\ 600\ Bunny.otf');
+}
+
+@font-face {
+  font-family: 'Tide Sans 900';
+  src: url('../fonts/Tide\ Sans\ 900\ Dude.otf');
+}
+
+.tide-sans-300 {
+  font-family: 'Tide Sans 300' !important;
+}
