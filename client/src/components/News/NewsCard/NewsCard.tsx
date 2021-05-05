@@ -37,14 +37,14 @@ const NewsCard: FunctionComponent<Props> = ({
   )
 
   if (isExternal) {
-    return <Link to={url}>{content}</Link>
+    return (
+      <a href={url} target="_blank">
+        {content}
+      </a>
+    )
   }
 
-  return (
-    <a href={url} target="_blank">
-      {content}
-    </a>
-  )
+  return <Link to={url}>{content}</Link>
 }
 
 export default NewsCard
