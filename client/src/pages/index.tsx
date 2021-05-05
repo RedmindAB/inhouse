@@ -93,7 +93,6 @@ const IndexPage = () => {
   `)
 
   const data: HomePageContextData = allContentfulHomePage.edges[0].node
-  console.log('data', data)
   const heroImage = parseContentfulFileUrl(data.hero.image.fluid.src)
 
   return (
