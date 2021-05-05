@@ -1,11 +1,12 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import React, { FunctionComponent, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import MultiSelect from '../MultiSelect'
-import { Input, Select, Spacer, TextArea } from '../../theme/base'
-import { submitNetlifyFileForm, submitNetlifyForm } from '../../util/helpers'
-import Button from '../Button/Button'
+import { Input, Spacer, TextArea } from '../../theme/base'
+import { Headline5 } from '../../theme/typography'
+import { submitNetlifyFileForm } from '../../util/helpers'
 import AcceptTerms from '../AcceptTerms/AcceptTerms'
+import Button from '../Button/Button'
+import MultiSelect from '../MultiSelect'
 
 type Props = {}
 
@@ -97,10 +98,21 @@ const ParticipateForm: FunctionComponent<Props> = () => {
         })}
       />
       <Spacer h32 />
+      <Headline5 color="black">Bifoga bild</Headline5>
+      <Spacer h12 />
       <Input
         type="file"
         ref={register({ required: true })}
-        name="files"
+        name="image"
+        style={{ border: 0, padding: 0 }}
+      />
+      <Spacer h16 />
+      <Headline5 color="black">Bifoga PDF</Headline5>
+      <Spacer h12 />
+      <Input
+        type="file"
+        ref={register({ required: true })}
+        name="pdf"
         style={{ border: 0, padding: 0 }}
       />
       <Spacer h16 />
