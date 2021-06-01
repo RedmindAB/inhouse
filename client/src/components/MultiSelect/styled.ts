@@ -38,10 +38,10 @@ export const InputClickable = styled.div`
   }
 `
 
-export const IconContainer = styled.div`
+export const IconContainer = styled.div<{ disabled: boolean }>`
   position: absolute;
   right: 20px;
-  background: white;
+  background: ${({ disabled }) => (disabled ? 'transparent' : 'white')};
 `
 
 export const Option = styled.div`
