@@ -34,7 +34,6 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `sroqziwmzomc`,
-        // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken: 'bYFFFvr0YgmRWoKcPHqpjb432n7DfE6Si4nx9MnT_ro',
       },
     },
@@ -42,22 +41,21 @@ module.exports = {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
         googleAnalytics: {
-          trackingId: '', // leave empty if you want to disable the tracker
-          cookieName: 'gatsby-gdpr-google-analytics', // default
-          anonymize: true, // default
-          allowAdFeatures: false, // default
+          trackingId: '',
+          cookieName: 'gatsby-gdpr-google-analytics',
+          anonymize: true,
+          allowAdFeatures: false,
         },
         googleTagManager: {
-          trackingId: 'G-1TBLN21DV1', // leave empty if you want to disable the tracker
-          cookieName: 'gatsby-gdpr-google-tagmanager', // default
-          dataLayerName: 'dataLayer', // default
+          trackingId: 'G-1TBLN21DV1',
+          cookieName: 'gatsby-gdpr-google-tagmanager',
+          dataLayerName: 'dataLayer',
         },
         facebookPixel: {
-          pixelId: '270502057925030', // leave empty if you want to disable the tracker
-          cookieName: 'gatsby-gdpr-facebook-pixel', // default
+          pixelId: '270502057925030',
+          cookieName: 'gatsby-gdpr-facebook-pixel',
         },
-        // defines the environments where the tracking should be available  - default is ["production"]
-        environments: ['production'],
+        environments: ['production', 'development'],
       },
     },
   ],
