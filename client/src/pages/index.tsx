@@ -105,6 +105,10 @@ const IndexPage = () => {
           name="description"
           content="Sveriges främsta kommunikationstävling för Inhousebyråer"
         />
+        <meta
+          name="facebook-domain-verification"
+          content="0xklyx0qcy9dxsx3cw5u7dw4swjweq"
+        />
         <html lang="en" />
       </Helmet>
       <main style={{ position: 'relative' }}>
