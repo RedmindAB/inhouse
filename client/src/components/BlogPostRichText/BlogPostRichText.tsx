@@ -85,7 +85,6 @@ const options = {
         )
       }
 
-      console.log('RENDER BOLD BLOCK')
       return (
         <Body2 onAccent bold={bold}>
           {children}
@@ -127,8 +126,8 @@ function renderRichText(data) {
         />
       )
     } else {
-      const bold =
-        curr.content[0].marks.findIndex(({ type }) => type === 'bold') !== -1
+      const marks = curr.content[0].marks
+      const bold = marks?.findIndex(({ type }) => type === 'bold') !== -1
       block = (
         <span key={index}>
           {options.renderNode[curr.nodeType](curr, curr.content[0].value, bold)}
