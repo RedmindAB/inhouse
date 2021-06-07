@@ -1,4 +1,3 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS } from '@contentful/rich-text-types'
 import React, { FunctionComponent, useContext } from 'react'
 import { BlogPostContext } from '../../templates/blogPost'
@@ -99,6 +98,20 @@ const options = {
 
 type Props = {}
 
+function renderRichText(data) {
+  const components = data.content.reduce((acc, curr, index) => {
+    const block = (
+      <span key={index}>
+        {options.renderNode[curr.nodeType](curr, curr.content[0].value)}
+      </span>
+    )
+
+    return [...acc, block]
+  }, [])
+
+  return components
+}
+
 const BlogPostRichText: FunctionComponent<Props> = () => {
   const {
     article: { raw, references },
@@ -118,7 +131,7 @@ const BlogPostRichText: FunctionComponent<Props> = () => {
     return node
   })
 
-  return <S.Container>{documentToReactComponents(data, options)}</S.Container>
+  return <S.Container>{renderRichText(data)}</S.Container>
 }
 
 export default BlogPostRichText
