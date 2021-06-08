@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { breakpoints } from '../../theme/mediaBreakpoints'
 
-export const Container = styled.div`
+export const Container = styled.article`
   h1,
   h2,
   h3,
@@ -9,6 +9,7 @@ export const Container = styled.div`
   h5,
   h6 {
     line-height: 1.3;
+    margin: 10px 0;
   }
 
   p {
