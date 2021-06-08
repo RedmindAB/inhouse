@@ -41,6 +41,7 @@ const typographyProps = css<TypographyProps>`
   ${({ color }) => color && `color: ${color};`}
   ${({ italic }) => italic && 'font-style: italic;'}
   ${({ underline }) => underline && 'text-decoration: underline;'}
+  ${({ bold }) => bold && "font-family: 'Tide Sans 600';"}
 `
 
 export type TypographyComponent<T = {}> = FunctionComponent<TypographyProps & T>
