@@ -1,8 +1,7 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS } from '@contentful/rich-text-types'
 import React, { FunctionComponent, useContext } from 'react'
 import { BlogPostContext } from '../../templates/blogPost'
-import { Spacer } from '../../theme/base'
+import { ContentContainer, Spacer } from '../../theme/base'
 import {
   Body2,
   Headline1,
@@ -44,25 +43,37 @@ const options = {
     ),
   },
   renderNode: {
-    [BLOCKS.HEADING_1]: (node, children) => (
-      <Headline1 onAccent>{children}</Headline1>
+    [BLOCKS.HEADING_1]: (node, children, bold) => (
+      <Headline1 onAccent bold={bold}>
+        {children}
+      </Headline1>
     ),
-    [BLOCKS.HEADING_2]: (node, children) => (
-      <Headline2 onAccent>{children}</Headline2>
+    [BLOCKS.HEADING_2]: (node, children, bold) => (
+      <Headline2 onAccent bold={bold}>
+        {children}
+      </Headline2>
     ),
-    [BLOCKS.HEADING_3]: (node, children) => (
-      <Headline3 onAccent>{children}</Headline3>
+    [BLOCKS.HEADING_3]: (node, children, bold) => (
+      <Headline3 onAccent bold={bold}>
+        {children}
+      </Headline3>
     ),
-    [BLOCKS.HEADING_4]: (node, children) => (
-      <Headline4 onAccent>{children}</Headline4>
+    [BLOCKS.HEADING_4]: (node, children, bold) => (
+      <Headline4 onAccent bold={bold}>
+        {children}
+      </Headline4>
     ),
-    [BLOCKS.HEADING_5]: (node, children) => (
-      <Headline5 onAccent>{children}</Headline5>
+    [BLOCKS.HEADING_5]: (node, children, bold) => (
+      <Headline5 onAccent bold={bold}>
+        {children}
+      </Headline5>
     ),
-    [BLOCKS.HEADING_6]: (node, children) => (
-      <Headline6 onAccent>{children}</Headline6>
+    [BLOCKS.HEADING_6]: (node, children, bold) => (
+      <Headline6 onAccent bold={bold}>
+        {children}
+      </Headline6>
     ),
-    [BLOCKS.PARAGRAPH]: (node, children) => {
+    [BLOCKS.PARAGRAPH]: (node, children, bold) => {
       const { value } = node.content[0]
 
       if (value.trim() === '') {
@@ -74,7 +85,11 @@ const options = {
         )
       }
 
-      return <Body2 onAccent>{children}</Body2>
+      return (
+        <Body2 onAccent bold={bold}>
+          {children}
+        </Body2>
+      )
     },
     [BLOCKS.EMBEDDED_ENTRY]: (...props) => {
       console.log('props embedded_entry', props)
@@ -99,6 +114,33 @@ const options = {
 
 type Props = {}
 
+function renderRichText(data) {
+  const components = data.content.reduce((acc, curr, index) => {
+    let block
+
+    if (!curr.content.length && curr.file) {
+      block = (
+        <S.Image
+          src={parseContentfulFileUrl(curr.file.file.url)}
+          alt={curr.file.title}
+        />
+      )
+    } else {
+      const marks = curr.content[0].marks
+      const bold = marks?.findIndex(({ type }) => type === 'bold') !== -1
+      block = (
+        <span key={index}>
+          {options.renderNode[curr.nodeType](curr, curr.content[0].value, bold)}
+        </span>
+      )
+    }
+
+    return [...acc, block]
+  }, [])
+
+  return components
+}
+
 const BlogPostRichText: FunctionComponent<Props> = () => {
   const {
     article: { raw, references },
@@ -118,7 +160,7 @@ const BlogPostRichText: FunctionComponent<Props> = () => {
     return node
   })
 
-  return <S.Container>{documentToReactComponents(data, options)}</S.Container>
+  return <S.Container>{renderRichText(data)}</S.Container>
 }
 
 export default BlogPostRichText
