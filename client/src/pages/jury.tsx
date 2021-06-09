@@ -49,7 +49,7 @@ const JuryPage = () => {
       <Header />
       <Helmet>
         <meta charSet="utf-8" />
-        <title>INHOUSE - Policies</title>
+        <title>INHOUSE - Jury</title>
         <meta
           name="description"
           content="Sveriges främsta kommunikationstävling för Inhousebyråer"
