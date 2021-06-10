@@ -64,9 +64,6 @@ const Footer = () => {
               <Link to="/#sponsors">
                 <S.Link>Sponsorer</S.Link>
               </Link>
-              <Link to="/participate#history">
-                <S.Link>Historia</S.Link>
-              </Link>
               <Link to="/jury">
                 <S.Link>Juryn</S.Link>
               </Link>
