@@ -38,12 +38,6 @@ export const HomePageContext = React.createContext<HomePageContextData>(null)
 const IndexPage = () => {
   const navigate = useNavigate()
 
-  // silverLogos {
-  //   file {
-  //     url
-  //   }
-  // }
-
   const { allContentfulHomePage } = useStaticQuery(graphql`
     query {
       allContentfulHomePage {
@@ -65,7 +59,11 @@ const IndexPage = () => {
                 url
               }
             }
-
+            silverLogos {
+              file {
+                url
+              }
+            }
             bronzeLogos {
               file {
                 url
