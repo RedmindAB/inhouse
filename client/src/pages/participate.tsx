@@ -262,7 +262,7 @@ const ParticipatePage = ({ location }) => {
           <section id="participate">
             <a
               ref={emailLink}
-              href={`mailto:info@inhousetavlingen.se?subject=${emailSubject}&body=${emailText}`}
+              href={`mailto:info@inhousetavlingen.se?subject=${emailSubject}`}
               target="_blank"
               style={{ display: "none" }}
             />
