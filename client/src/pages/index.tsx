@@ -115,13 +115,7 @@ const IndexPage = () => {
         <html lang="en" />
       </Helmet>
       <main style={{ position: 'relative' }}>
-        <Hero
-          title={data.hero.title}
-          body={data.hero.body.body}
-          image={heroImage}
-          ctaLink={attendButtonLink}
-          ctaTitle="Köp biljett"
-        />
+        <Hero title={data.hero.title} body={data.hero.body.body} image={heroImage} />
         <Spacer exact={70} />
         <News />
         <Spacer exact={70} />
