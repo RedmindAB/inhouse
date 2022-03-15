@@ -6,23 +6,10 @@ import Instagram from '../../assets/svg/Instagram'
 import Logo from '../../assets/svg/Logo'
 import Twitter from '../../assets/svg/Twitter'
 import { ContentContainer, Spacer } from '../../theme/base'
-import {
-  Body1,
-  Body4,
-  CopyRight,
-  Headline4,
-  Headline6,
-} from '../../theme/typography'
+import { Body4, CopyRight, Headline6 } from '../../theme/typography'
 import EmailForm from '../EmailForm/EmailForm'
 import Divider from '../__general/Divider'
 import * as S from './styled'
-
-type Props = {}
-
-// Evenemangsoperatör:
-// DIVISION
-// Sturegatan 4, 2tr
-// 114 35 Stockholm
 
 const Footer = () => {
   const {
@@ -85,7 +72,7 @@ const Footer = () => {
               <Body4 light>
                 Evenemangsoperatör:
                 <br />
-                DIVISION
+                Arkitektkopia
                 <br />
                 <br />
                 Sturegatan 4, 2tr
@@ -94,9 +81,7 @@ const Footer = () => {
                 <br />
                 <br />
                 <a href="mailto:info@inhousetavlingen.se" target="_blank">
-                  <S.Link style={{ opacity: 1 }}>
-                    info@inhousetavlingen.se
-                  </S.Link>
+                  <S.Link style={{ opacity: 1 }}>info@inhousetavlingen.se</S.Link>
                 </a>
               </Body4>
               <Link to="/policies">
