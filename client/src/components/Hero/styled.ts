@@ -23,7 +23,10 @@ const smallTextContainer = css`
   max-width: 80vw;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+
+  h1 {
+    overflow-wrap: break-word;
+  }
 `
 
 export const TextContainer = styled.div<SizeProps>`
@@ -116,9 +119,5 @@ export const Gradient = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
-    45.39% 65% at 50% 50%,
-    rgba(255, 255, 255, 0) 0%,
-    #000000 100%
-  );
+  background: radial-gradient(45.39% 65% at 50% 50%, rgba(255, 255, 255, 0) 0%, #000000 100%);
 `
