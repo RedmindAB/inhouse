@@ -2,7 +2,6 @@ import React from 'react'
 import { Body1, Body2 } from '../../../theme/typography'
 import { Mail, Underlined } from '../NavigationContact/styled'
 import { Row } from '../styled'
-import * as S from './styled'
 
 type Props = {}
 
@@ -14,11 +13,9 @@ const Location = () => {
       </div>
       <div>
         <Body2>
-          Sturegatan 4, 2 tr
+          Johannesfredsvägen 15,
           <br />
-          Box 55719
-          <br />
-          114 35 Stockholm
+          168 69 Bromma
         </Body2>
       </div>
       <div>

@@ -75,9 +75,9 @@ const Footer = () => {
                 Arkitektkopia
                 <br />
                 <br />
-                Sturegatan 4, 2tr
+                Johannesfredsvägen 15,
                 <br />
-                114 35 Stockholm
+                168 69 Bromma
                 <br />
                 <br />
                 <a href="mailto:info@inhousetavlingen.se" target="_blank">
