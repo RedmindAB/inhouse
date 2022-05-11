@@ -19,11 +19,7 @@ const JuryHero: FunctionComponent<Props> = () => {
         </div>
       </S.GraphicsContainer>
       <S.TextContainer>
-        <Title1 accent>
-          2022
-          <br />
-          JURY
-        </Title1>
+        <Title1 accent>JURY</Title1>
       </S.TextContainer>
     </S.Container>
   )
