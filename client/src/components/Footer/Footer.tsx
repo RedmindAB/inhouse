@@ -94,7 +94,7 @@ const Footer = () => {
         <Divider />
         <Spacer h32 />
         <S.Bottom>
-          <CopyRight>© 2021 INHOUSETÄVLINGEN</CopyRight>
+          <CopyRight>© 2022 INHOUSETÄVLINGEN</CopyRight>
           <S.Social>
             <Twitter />
             <Facebook />
