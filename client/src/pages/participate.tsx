@@ -10,7 +10,6 @@ import Hero from '../components/Hero'
 import InformationBlock from '../components/InformationBlock/InformationBlock'
 import LogoBar from '../components/LogoBar/LogoBar'
 import ParticipateModal from '../components/ParticipateModal/ParticipateModal'
-import PhotoGallery from '../components/PhotoGallery'
 import SponsorModal from '../components/SponsorModal/SponsorModal'
 import '../css/index.css'
 import { ContentContainer, Spacer } from '../theme/base'
@@ -67,7 +66,6 @@ const ParticipatePage = ({ location }) => {
     location.hash === '#participate'
   )
   const [sponsorFormVisible, setSponsorFormVisible] = React.useState(location.hash === '#sponsor')
-  const emailLink = React.useRef<HTMLAnchorElement>()
 
   const { allContentfulRegisterPage } = useStaticQuery(graphql`
     query {
@@ -169,13 +167,10 @@ const ParticipatePage = ({ location }) => {
   }
 
   const onClickCompete = () => {
-    // if (data.competeButtonLink) {
-    //   return window.open(data.competeButtonLink);
-    // }
-    if (emailLink?.current) {
-      emailLink?.current?.click()
+    if (data.competeButtonLink) {
+      return window.open(data.competeButtonLink)
     }
-    // toggleParticipateModalVisibility();
+    toggleParticipateModalVisibility()
   }
 
   const onClickSponsor = () => {
@@ -191,16 +186,6 @@ const ParticipatePage = ({ location }) => {
       downloadRemoteFile(parseContentfulFileUrl(file.url), file.contentType)
     )
   }
-
-  const lineBreak = (amount = 1) => '%0D'.repeat(amount)
-  const emailText = `Bidragen skickas in via formuläret som PDF enligt mall tillsammans med en högupplöst bild (.jpg) eller film (.mp4) i separat fil. Det går även att istället dela mediafilerna via länk i fritextfältet som då ej får vara tidsbegränsad. Max 100 mb per fil. Filmer max 2 minuter långa.${lineBreak(
-    2
-  )}För "Bästa print" ska även ett fysiskt exemplar skickas in senast den 3 september. Mer info om detta hittar ni i tävlingsmaterialet på sidan "om tävlingen".${lineBreak(
-    2
-  )}Företagsnamn:${lineBreak(2)}Kontakt e-mail:${lineBreak(2)}Kategorier:${lineBreak(
-    2
-  )}Lämna ett meddelande:${lineBreak(6)}`
-  const emailSubject = `Jag är redo att tävla!`
 
   return (
     <RegisterPageContext.Provider value={data}>
@@ -238,12 +223,6 @@ const ParticipatePage = ({ location }) => {
             />
           </section>
           <section id="participate">
-            <a
-              ref={emailLink}
-              href={`mailto:info@inhousetavlingen.se?subject=${emailSubject}`}
-              target="_blank"
-              style={{ display: 'none' }}
-            />
             <Spacer exact={80} />
             <ActionCard
               inverted
