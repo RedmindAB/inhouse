@@ -1,12 +1,12 @@
 import chromium from 'chrome-aws-lambda'
+import puppeteer from 'puppeteer-core'
 
 async function crawlForCookie(email: string, password: string) {
-  const browser = await chromium.puppeteer.launch({
+  const browser = await puppeteer.launch({
+    executablePath: await chromium.executablePath,
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath,
     headless: chromium.headless,
-    ignoreHTTPSErrors: true,
   })
   const page = await browser.newPage()
   await page.goto('https://app.bwz.se/arkitektkopia/login')
