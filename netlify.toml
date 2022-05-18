@@ -2,4 +2,3 @@
   command = "npm run build"
   publish = "client/public"
   functions = "functions/dist"
-  environment = { MAILCHIMP_API_KEY = '18e9f2ae8def948034e8486a2b05f909-us16', MAILCHIMP_AUDIENCE_ID = '2da99eb1d5' }
