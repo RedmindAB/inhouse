@@ -50,7 +50,7 @@ export function parseSubscriptionRequestBody(userId: string) {
 export function parseUserSearchHtmlToUserId(data: string) {
   const root = parse(data)
   const userTr = root.querySelector('tbody.sel-table tr:nth-child(1)')
-  const userId = userTr?.attributes?.['data-id']
+  const userId = userTr && userTr.attributes && userTr.attributes['data-id']
 
   return userId
 }

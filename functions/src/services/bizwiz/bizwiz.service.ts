@@ -6,18 +6,18 @@ import {
   parseUserSearchHtmlToUserId,
 } from './bizwiz.parser'
 
-class BizWizService {
-  static httpClient = axios.create({ baseURL: process.env.BIZWIZ_API_URL })
-  static password = process.env.BIZWIZ_PASSWORD
-  static username = process.env.BIZWIZ_USERNAME
+const httpClient = axios.create({ baseURL: process.env.BIZWIZ_API_URL })
+const password = process.env.BIZWIZ_PASSWORD
+const username = process.env.BIZWIZ_USERNAME
 
-  static async authenticate() {
-    const cookie = await crawlForCookie(this.username, this.password)
-    this.httpClient.defaults.headers.common.Cookie = cookie
+class BizWizService {
+  async authenticate() {
+    const cookie = await crawlForCookie(username, password)
+    httpClient.defaults.headers.common.Cookie = cookie
   }
 
-  static async createUser(email: string): Promise<string> {
-    const { data } = await this.httpClient.post<any>(
+  async createUser(email: string): Promise<string> {
+    const { data } = await httpClient.post<any>(
       '/recipientlist/modal/modalpickernewrecipientview?recipientType=MAILRECIPIENT&_viewAs=view_list',
       parseUserCreationRequestBody(email)
     )
@@ -25,8 +25,8 @@ class BizWizService {
     return data.Data.Id.toString()
   }
 
-  static async getUserId(email: string, listId: string) {
-    const { data } = await this.httpClient.get<string>(
+  async getUserId(email: string, listId: string) {
+    const { data } = await httpClient.get<string>(
       `/recipientlist/modal/modalpickerrecipientview?recipientListId=${listId}&recipientType=MAILRECIPIENT&_viewAs=view_list&_search=${email}`
     )
     const userId = parseUserSearchHtmlToUserId(data)
@@ -34,10 +34,10 @@ class BizWizService {
     return userId
   }
 
-  static async subscribeEmailToList(email: string, listId: string) {
+  async subscribeEmailToList(email: string, listId: string) {
     const userId = (await this.getUserId(email, listId)) || (await this.createUser(email))
 
-    await this.httpClient.post(
+    await httpClient.post(
       `/mailrecipientlist/action/saverecipientstolist?recipientListId=${listId}`,
       parseSubscriptionRequestBody(userId)
     )
