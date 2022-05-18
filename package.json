@@ -21,7 +21,7 @@
     "encoding": "^0.1.13",
     "lambda-multipart-parser": "^1.0.0",
     "node-html-parser": "^5.3.3",
-    "puppeteer": "^14.1.0"
+    "puppeteer-core": "^14.1.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",
