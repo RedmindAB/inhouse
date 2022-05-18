@@ -5,7 +5,7 @@ async function crawlForCookie(email: string, password: string) {
     executablePath: await chromium.executablePath,
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
-    headless: true,
+    headless: chromium.headless,
   })
   const page = await browser.newPage()
   await page.goto('https://app.bwz.se/arkitektkopia/login')
