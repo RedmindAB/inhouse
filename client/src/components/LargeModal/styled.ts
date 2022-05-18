@@ -12,20 +12,23 @@ export const Backdrop = styled.div`
   bottom: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding: 20px 0;
+
+  ${breakpoints.tablet} {
+    padding: 0;
+  }
 `
 
 export const Container = styled(Card)`
   width: 80%;
-  min-height: 80%;
   max-width: 1400px;
   position: relative;
   padding: 100px;
+  overflow: scroll;
 
   ${breakpoints.tablet} {
     width: 100%;
     height: 100%;
-    overflow: scroll;
     padding: 100px 40px 40px 40px;
   }
 `

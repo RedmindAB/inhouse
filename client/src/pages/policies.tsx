@@ -18,6 +18,7 @@ const PoliciesPage = () => {
           name="description"
           content="Sveriges främsta kommunikationstävling för Inhousebyråer"
         />
+        <meta name="facebook-domain-verification" content="0xklyx0qcy9dxsx3cw5u7dw4swjweq" />
         <html lang="en" />
       </Helmet>
       <main style={{ position: 'relative' }}>
@@ -27,38 +28,23 @@ const PoliciesPage = () => {
           <Spacer exact={60} />
           <TextContainer width="1000px">
             <Body2>
-              DIVISION är operatören av Inhousetävlingen från 2020. Arrangör och
-              ägare av varumärket Inhousetävlingen är Arkitektkopia. DIVISION är
-              en del av koncernen Stureplansgruppen. DIVISION behandlar å
-              Inhousetävlingen och Arkitektkopias vägnar samt i den egna
-              verksamheten personuppgifter i sin dagliga verksamhet.
-              Integritetspolicyn gäller generellt för personuppgiftsbehandlingen
-              inom DIVISION samt Stureplansgruppen och finns till för att
-              förklara vilken sorts data Stureplansgruppen behandlar, varför och
-              hur. Personuppgifter behandlas i DIVISIONs och Inhousetävlingens
-              administrations- och bokningssystem. Personuppgifter behandlas
-              också i de sammas applikationer, plattformar i sociala medier och
-              på hemsidan inhousetavlingen.se (”Digitala kanaler”).
-              Integritetspolicyn är tillämpbar på anställda, leverantörer och
-              gäster.
+              GDPR &amp; Integritetspolicy
               <br />
               <br />
-              Kontaktuppgifter som delas vid anmälan till tävlingen eller dess
-              underengagemang kan komma att delas med partners och sponsorer
-              till Inhousetävlingen i marknadsföringssyfte.
+              Arkitektkopia AB är operatör av Inhousetävlingen från 2022, tillika arrangör och ägare
+              av varumärket Inhousetävlingen. För personuppgifter som behandlas i Inhousetävlingen
+              gäller att avtal finns mellan Arkitektkopia AB och deltagande parter som motiverar
+              detta. De personuppgifter som behandlas är kontaktuppgifter till berörda hos de
+              företag som deltar i tävlingen. Detta omfattar namn, telefonnummer, mejladresser och
+              adresser. Behandlingen av dessa personuppgifter sker i de applikationer och system som
+              används för administration och bokning, liksom inom de applikationer och plattformar
+              som nyttjas för inhousetavlingen.se (”Digitala kanaler”). Integritetspolicyn är
+              tillämpbar på anställda, leverantörer och gäster.
               <br />
               <br />
-              För att läsa mer om DIVISIONs personuppgiftshantering samt för att
-              tillvarata dina rättigheter enligt GDPR, se{' '}
-              <a
-                href="https://www.stureplansgruppen.se/policies"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="accent">
-                  https://www.stureplansgruppen.se/policies
-                </span>
-              </a>
+              Kontaktuppgifter som delas vid anmälan till tävlingen eller dess underengagemang kan
+              komma att delas med partners och sponsorer till Inhousetävlingen i
+              marknadsföringssyfte.
             </Body2>
           </TextContainer>
           <Spacer exact={100} />

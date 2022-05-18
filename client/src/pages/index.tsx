@@ -1,20 +1,20 @@
+import { useNavigate } from '@reach/router'
 import { graphql, useStaticQuery } from 'gatsby'
 import * as React from 'react'
-import News from '../components/News'
 import { Helmet } from 'react-helmet'
 import EmailForm from '../components/EmailForm/EmailForm'
 import Footer from '../components/Footer'
-import Header from '../components/Header/Header'
 import GDPRBanner from '../components/GDPRBanner'
+import Header from '../components/Header/Header'
 import Hero from '../components/Hero'
 import InformationBlock from '../components/InformationBlock/InformationBlock'
 import Inhouse10Years from '../components/Inhouse10Years'
+import News from '../components/News'
 import SponsorsList from '../components/SponsorsList'
 import '../css/index.css'
 import { ContentContainer, Spacer } from '../theme/base'
-import { useNavigate } from '@reach/router'
-import { parseContentfulFileUrl } from '../util/helpers'
 import { parseContentfulBody } from '../util/contentful'
+import { parseContentfulFileUrl } from '../util/helpers'
 
 type HomePageContextData = {
   hero: {
@@ -38,14 +38,15 @@ export const HomePageContext = React.createContext<HomePageContextData>(null)
 const IndexPage = () => {
   const navigate = useNavigate()
 
-  // silverLogos {
-  //   file {
-  //     url
-  //   }
-  // }
-
-  const { allContentfulHomePage } = useStaticQuery(graphql`
+  const { allContentfulHomePage, allContentfulRegisterPage } = useStaticQuery(graphql`
     query {
+      allContentfulRegisterPage {
+        edges {
+          node {
+            attendButtonLink
+          }
+        }
+      }
       allContentfulHomePage {
         edges {
           node {
@@ -65,7 +66,11 @@ const IndexPage = () => {
                 url
               }
             }
-
+            silverLogos {
+              file {
+                url
+              }
+            }
             bronzeLogos {
               file {
                 url
@@ -93,7 +98,7 @@ const IndexPage = () => {
   `)
 
   const data: HomePageContextData = allContentfulHomePage.edges[0].node
-  console.log('data', data)
+  const attendButtonLink = allContentfulRegisterPage.edges[0].node.attendButtonLink
   const heroImage = parseContentfulFileUrl(data.hero.image.fluid.src)
 
   return (
@@ -106,14 +111,11 @@ const IndexPage = () => {
           name="description"
           content="Sveriges främsta kommunikationstävling för Inhousebyråer"
         />
+        <meta name="facebook-domain-verification" content="0xklyx0qcy9dxsx3cw5u7dw4swjweq" />
         <html lang="en" />
       </Helmet>
       <main style={{ position: 'relative' }}>
-        <Hero
-          title={data.hero.title}
-          body={data.hero.body.body}
-          image={heroImage}
-        />
+        <Hero title={data.hero.title} body={data.hero.body.body} image={heroImage} />
         <Spacer exact={70} />
         <News />
         <Spacer exact={70} />

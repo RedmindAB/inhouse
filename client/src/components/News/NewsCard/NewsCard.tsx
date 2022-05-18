@@ -21,7 +21,6 @@ const NewsCard: FunctionComponent<Props> = ({
   date,
 }) => {
   const isExternal = url.includes('http') || url.includes('www')
-  const target = isExternal ? '_blank' : '_self'
 
   const content = (
     <S.Container>
@@ -39,7 +38,7 @@ const NewsCard: FunctionComponent<Props> = ({
 
   if (isExternal) {
     return (
-      <a href={url} target={target}>
+      <a href={url} target="_blank">
         {content}
       </a>
     )

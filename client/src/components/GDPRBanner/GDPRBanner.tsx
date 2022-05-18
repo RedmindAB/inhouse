@@ -11,6 +11,9 @@ const GDPRBanner: FunctionComponent<Props> = () => {
   const location = useLocation()
 
   const onAcceptCookies = () => {
+    document.cookie = `gatsby-gdpr-facebook-pixel=true;`
+    document.cookie = `gatsby-gdpr-google-analytics=true;`
+    document.cookie = `gatsby-gdpr-google-tagmanager=true;`
     initializeAndTrack(location)
   }
 
@@ -19,7 +22,7 @@ const GDPRBanner: FunctionComponent<Props> = () => {
       location="bottom"
       buttonText="Godkänn"
       declineButtonText="Neka"
-      cookieName="gatsby-plugin-gdpr-cookies"
+      cookieName="gatsby-gdpr-facebook-pixel"
       style={{
         background: '#292929',
         padding: '10px',

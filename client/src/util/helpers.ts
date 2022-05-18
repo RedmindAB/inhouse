@@ -4,7 +4,11 @@ import download from 'downloadjs'
 const encodeDataToFormData = (data) => {
   const formData = new FormData()
   Object.keys(data).map((key) => {
-    if (key === 'files') {
+    const isFiles = Object.values(data[key]).every(
+      (file) => typeof file === 'object'
+    )
+
+    if (isFiles) {
       for (const file of data[key]) {
         formData.append(key, file, file.name)
       }

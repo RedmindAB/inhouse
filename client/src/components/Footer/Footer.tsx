@@ -6,23 +6,10 @@ import Instagram from '../../assets/svg/Instagram'
 import Logo from '../../assets/svg/Logo'
 import Twitter from '../../assets/svg/Twitter'
 import { ContentContainer, Spacer } from '../../theme/base'
-import {
-  Body1,
-  Body4,
-  CopyRight,
-  Headline4,
-  Headline6,
-} from '../../theme/typography'
+import { Body4, CopyRight, Headline6 } from '../../theme/typography'
 import EmailForm from '../EmailForm/EmailForm'
 import Divider from '../__general/Divider'
 import * as S from './styled'
-
-type Props = {}
-
-// Evenemangsoperatör:
-// DIVISION
-// Sturegatan 4, 2tr
-// 114 35 Stockholm
 
 const Footer = () => {
   const {
@@ -64,9 +51,6 @@ const Footer = () => {
               <Link to="/#sponsors">
                 <S.Link>Sponsorer</S.Link>
               </Link>
-              <Link to="/participate#history">
-                <S.Link>Historia</S.Link>
-              </Link>
               <Link to="/jury">
                 <S.Link>Juryn</S.Link>
               </Link>
@@ -88,18 +72,16 @@ const Footer = () => {
               <Body4 light>
                 Evenemangsoperatör:
                 <br />
-                DIVISION
+                Arkitektkopia
                 <br />
                 <br />
-                Sturegatan 4, 2tr
+                Johannesfredsvägen 15,
                 <br />
-                114 35 Stockholm
+                168 69 Bromma
                 <br />
                 <br />
                 <a href="mailto:info@inhousetavlingen.se" target="_blank">
-                  <S.Link style={{ opacity: 1 }}>
-                    info@inhousetavlingen.se
-                  </S.Link>
+                  <S.Link style={{ opacity: 1 }}>info@inhousetavlingen.se</S.Link>
                 </a>
               </Body4>
               <Link to="/policies">
@@ -112,7 +94,7 @@ const Footer = () => {
         <Divider />
         <Spacer h32 />
         <S.Bottom>
-          <CopyRight>© 2021 INHOUSETÄVLINGEN</CopyRight>
+          <CopyRight>© 2022 INHOUSETÄVLINGEN</CopyRight>
           <S.Social>
             <Twitter />
             <Facebook />

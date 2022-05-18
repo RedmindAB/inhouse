@@ -42,7 +42,7 @@ const MultiSelect: FunctionComponent<Props> = ({
     <S.Container>
       <S.InputClickable onClick={toggleDropdown}>
         <Input value={selectedOptions.join(', ')} {...inputProps} />
-        <S.IconContainer>
+        <S.IconContainer disabled={inputProps.disabled}>
           <ChevronDown />
         </S.IconContainer>
       </S.InputClickable>

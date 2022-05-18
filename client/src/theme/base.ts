@@ -127,6 +127,7 @@ export const ContentContainer = styled.div<{
   margin: 0 auto;
 
   ${breakpoints.mobile} {
+    width: ${({ width = '100%' }) => width};
     padding: ${({ padding = '0 20px' }) => padding};
   }
 `

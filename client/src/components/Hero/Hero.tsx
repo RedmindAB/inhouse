@@ -3,6 +3,7 @@ import YellowLines from '../../assets/svg/YellowLines'
 import { Spacer } from '../../theme/base'
 import { Body1, Title1 } from '../../theme/typography'
 import { parseContentfulBody } from '../../util/contentful'
+import Button from '../Button/Button'
 import * as S from './styled'
 
 type Props = {
@@ -10,6 +11,8 @@ type Props = {
   title: string
   body: any
   image?: any
+  ctaLink?: string
+  ctaTitle?: string
 }
 
 const Hero: FunctionComponent<Props> = ({
@@ -17,6 +20,8 @@ const Hero: FunctionComponent<Props> = ({
   title,
   body,
   image,
+  ctaLink,
+  ctaTitle,
 }) => {
   return (
     <S.Container id="hero" size={size}>
@@ -26,6 +31,14 @@ const Hero: FunctionComponent<Props> = ({
         </Title1>
         <Spacer h44 />
         <Body1>{parseContentfulBody(body)}</Body1>
+        {ctaLink && ctaTitle && (
+          <>
+            <Spacer h44 />
+            <a href={ctaLink} rel="noopener noreferrer" target="_blank">
+              <Button title={ctaTitle} />
+            </a>
+          </>
+        )}
       </S.TextContainer>
 
       <S.ImageContainer size={size}>

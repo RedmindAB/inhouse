@@ -167,6 +167,10 @@ const AboutPage = () => {
         <meta charSet="utf-8" />
         <title>INHOUSE</title>
         <meta
+          name="facebook-domain-verification"
+          content="0xklyx0qcy9dxsx3cw5u7dw4swjweq"
+        />
+        <meta
           name="description"
           content="Sveriges främsta kommunikationstävling för Inhousebyråer"
         />

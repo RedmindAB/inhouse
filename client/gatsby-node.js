@@ -35,7 +35,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
 
   const blogPosts = data.allContentfulBlogPost.edges.map(({ node }) => node)
 
-  blogPosts.forEach((blogPost) => {
+  blogPosts.forEach(blogPost => {
     const slug = slugify(blogPost.headline).toLowerCase()
 
     createPage({
@@ -82,9 +82,15 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
       headline: String
       ctaLink: String
     }
+
+    type ContentfulHomePage implements Node {
+      silverLogos: [Asset]
+      goldLogos: [Asset]
+      bronzeLogos: [Asset]
+      otherLogos: [Asset]
+    }
   `
 
-    
   // type ContentfulHomePage implements Node {
   //   goldLogos: [Asset]
   //   silverLogos: [Asset]

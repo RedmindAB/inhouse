@@ -29,6 +29,10 @@ const BlogPost: FunctionComponent<Props> = ({ pageContext: { blogPost } }) => {
         <title>INHOUSE - {blogPost.headline}</title>
         <meta name="description" content={blogPost.preamble.preamble} />
         <html lang="en" />
+        <meta
+          name="facebook-domain-verification"
+          content="0xklyx0qcy9dxsx3cw5u7dw4swjweq"
+        />
       </Helmet>
       <Header />
       <Spacer exact={headerHeight} />

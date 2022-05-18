@@ -10,7 +10,6 @@ import Hero from '../components/Hero'
 import InformationBlock from '../components/InformationBlock/InformationBlock'
 import LogoBar from '../components/LogoBar/LogoBar'
 import ParticipateModal from '../components/ParticipateModal/ParticipateModal'
-import PhotoGallery from '../components/PhotoGallery'
 import SponsorModal from '../components/SponsorModal/SponsorModal'
 import '../css/index.css'
 import { ContentContainer, Spacer } from '../theme/base'
@@ -59,21 +58,14 @@ type RegisterPageContextData = {
   sponsorButtonLink: string
 }
 
-export const RegisterPageContext = React.createContext<RegisterPageContextData>(
-  null
-)
+export const RegisterPageContext = React.createContext<RegisterPageContextData>(null)
 
 const ParticipatePage = ({ location }) => {
-  const [attendFormVisible, setAttendFormVisible] = React.useState(
-    location.hash === '#attend'
+  const [attendFormVisible, setAttendFormVisible] = React.useState(location.hash === '#attend')
+  const [participationFormVisible, setParticipationFormVisible] = React.useState(
+    location.hash === '#participate'
   )
-  const [
-    participationFormVisible,
-    setParticipationFormVisible,
-  ] = React.useState(location.hash === '#participate')
-  const [sponsorFormVisible, setSponsorFormVisible] = React.useState(
-    location.hash === '#sponsor'
-  )
+  const [sponsorFormVisible, setSponsorFormVisible] = React.useState(location.hash === '#sponsor')
 
   const { allContentfulRegisterPage } = useStaticQuery(graphql`
     query {
@@ -178,7 +170,6 @@ const ParticipatePage = ({ location }) => {
     if (data.competeButtonLink) {
       return window.open(data.competeButtonLink)
     }
-
     toggleParticipateModalVisibility()
   }
 
@@ -199,18 +190,12 @@ const ParticipatePage = ({ location }) => {
   return (
     <RegisterPageContext.Provider value={data}>
       <Header />
-      <AttendModal
-        visible={attendFormVisible}
-        onClose={toggleAttendModalVisibility}
-      />
+      <AttendModal visible={attendFormVisible} onClose={toggleAttendModalVisibility} />
       <ParticipateModal
         visible={participationFormVisible}
         onClose={toggleParticipateModalVisibility}
       />
-      <SponsorModal
-        visible={sponsorFormVisible}
-        onClose={toggleSponsorModalVisibility}
-      />
+      <SponsorModal visible={sponsorFormVisible} onClose={toggleSponsorModalVisibility} />
       <Helmet>
         <meta charSet="utf-8" />
         <title>INHOUSE</title>
@@ -218,27 +203,22 @@ const ParticipatePage = ({ location }) => {
           name="description"
           content="Sveriges främsta kommunikationstävling för Inhousebyråer"
         />
+        <meta name="facebook-domain-verification" content="0xklyx0qcy9dxsx3cw5u7dw4swjweq" />
         <html lang="en" />
       </Helmet>
       <main style={{ position: 'relative' }}>
-        <Hero
-          title={data.hero.title}
-          body={data.hero.body.body}
-          image={heroImage}
-        />
+        <Hero title={data.hero.title} body={data.hero.body.body} image={heroImage} />
         <ContentContainer>
           <section id="attend">
             <Spacer exact={70} />
             <ActionCard
               title={data.attendSection.title}
-              body={parseContentfulBody(
-                data.attendSection.description.description
-              )}
+              body={parseContentfulBody(data.attendSection.description.description)}
               button={{
                 title: data.attendSection.buttonText,
                 onClick: onClickAttend,
                 disabled: data.attendButtonDisabled,
-                comingSoon: true,
+                comingSoon: false,
               }}
             />
           </section>
@@ -247,9 +227,7 @@ const ParticipatePage = ({ location }) => {
             <ActionCard
               inverted
               title={data.competeSection.title}
-              body={parseContentfulBody(
-                data.competeSection.description.description
-              )}
+              body={parseContentfulBody(data.competeSection.description.description)}
               button={{
                 title: data.competeSection.buttonText,
                 onClick: onClickCompete,
@@ -262,9 +240,7 @@ const ParticipatePage = ({ location }) => {
             <Spacer exact={80} />
             <ActionCard
               title={data.sponsorSection.title}
-              body={parseContentfulBody(
-                data.sponsorSection.description.description
-              )}
+              body={parseContentfulBody(data.sponsorSection.description.description)}
               button={{
                 title: data.sponsorSection.buttonText,
                 onClick: onClickSponsor,
@@ -277,9 +253,7 @@ const ParticipatePage = ({ location }) => {
           <Spacer exact={140} />
           <InformationBlock
             title={data.informationSection.title}
-            body={parseContentfulBody(
-              data.informationSection.description.description
-            )}
+            body={parseContentfulBody(data.informationSection.description.description)}
             cta={{
               text: data.informationSection.buttonText,
               onClick: onClickDownloadFiles,
