@@ -4,5 +4,6 @@ module.exports = {
   plugins: [new webpack.DefinePlugin({ 'global.GENTLY': false })],
   externals: {
     'chrome-aws-lambda': 'chrome-aws-lambda',
+    'puppeteer-core': 'puppeteer-core',
   },
 }
