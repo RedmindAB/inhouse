@@ -3,7 +3,8 @@ import parse from 'node-html-parser'
 export function parseUserCreationRequestBody(email: string) {
   const [fName, lName] = email.split('@')
 
-  return {
+  const formData = new URLSearchParams()
+  const formDataObj = {
     ['RecipientPropertiesViewModel.RecipientPropertyViewModels[0].Id']: '1',
     ['RecipientPropertiesViewModel.RecipientPropertyViewModels[0].Name']: 'Email',
     ['RecipientPropertiesViewModel.RecipientPropertyViewModels[0].Type']: 'EMAIL',
@@ -38,6 +39,12 @@ export function parseUserCreationRequestBody(email: string) {
     ['HiddenRecipientPropertiesViewModel.RecipientPropertyViewModels[4].Type']: 'TEXT',
     ['HiddenRecipientPropertiesViewModel.RecipientPropertyViewModels[4].Value']: '',
   }
+
+  Object.entries(formDataObj).forEach(([key, value]) => {
+    formData.append(key, value)
+  })
+
+  return formData
 }
 
 export function parseSubscriptionRequestBody(userId: string) {
