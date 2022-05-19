@@ -3,8 +3,8 @@ import Img from 'gatsby-image'
 import React from 'react'
 import Facebook from '../../assets/svg/Facebook'
 import Instagram from '../../assets/svg/Instagram'
+import Linkedin from '../../assets/svg/Linkedin'
 import Logo from '../../assets/svg/Logo'
-import Twitter from '../../assets/svg/Twitter'
 import { ContentContainer, Spacer } from '../../theme/base'
 import { Body4, CopyRight, Headline6 } from '../../theme/typography'
 import EmailForm from '../EmailForm/EmailForm'
@@ -96,9 +96,27 @@ const Footer = () => {
         <S.Bottom>
           <CopyRight>© 2022 INHOUSETÄVLINGEN</CopyRight>
           <S.Social>
-            <Twitter />
-            <Facebook />
-            <Instagram />
+            <a
+              href="https://www.linkedin.com/company/arkitektkopia-ab"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Linkedin />
+            </a>
+            <a
+              href="https://www.facebook.com/arkitektkopia/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Facebook />
+            </a>
+            <a
+              href="https://www.instagram.com/arkitektkopia"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Instagram />
+            </a>
           </S.Social>
         </S.Bottom>
       </ContentContainer>
