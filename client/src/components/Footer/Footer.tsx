@@ -97,21 +97,21 @@ const Footer = () => {
           <CopyRight>© 2022 INHOUSETÄVLINGEN</CopyRight>
           <S.Social>
             <a
-              href="https://www.linkedin.com/company/arkitektkopia-ab"
+              href="https://www.linkedin.com/company/76713067"
               rel="noopener noreferrer"
               target="_blank"
             >
               <Linkedin />
             </a>
             <a
-              href="https://www.facebook.com/arkitektkopia/"
+              href="https://www.facebook.com/Inhouset%C3%A4vlingen-106937244877769"
               rel="noopener noreferrer"
               target="_blank"
             >
               <Facebook />
             </a>
             <a
-              href="https://www.instagram.com/arkitektkopia"
+              href="https://www.instagram.com/inhousetavlingen"
               rel="noopener noreferrer"
               target="_blank"
             >
