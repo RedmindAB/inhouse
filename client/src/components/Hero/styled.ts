@@ -19,8 +19,6 @@ export const Container = styled.section<SizeProps>`
 const smallTextContainer = css`
   left: initial;
   right: 10%;
-  width: 600px;
-  max-width: 80vw;
   display: flex;
   flex-direction: column;
 
@@ -33,8 +31,8 @@ export const TextContainer = styled.div<SizeProps>`
   position: absolute;
   bottom: 25%;
   left: 15%;
-  width: 440px;
-  max-width: 90%;
+  width: 1000px;
+  max-width: 80%;
 
   ${breakpoints.mobile} {
     ${smallTextContainer}

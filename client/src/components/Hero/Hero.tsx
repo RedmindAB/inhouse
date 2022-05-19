@@ -26,9 +26,7 @@ const Hero: FunctionComponent<Props> = ({
   return (
     <S.Container id="hero" size={size}>
       <S.TextContainer size={size}>
-        <Title1 accent uppercase>
-          {title}
-        </Title1>
+        <Title1 accent uppercase dangerouslySetInnerHTML={{ __html: title }} />
         <Spacer h44 />
         <Body1>{parseContentfulBody(body)}</Body1>
         {ctaLink && ctaTitle && (

@@ -59,10 +59,7 @@ export type AboutPageDataCategory = {
 export const AboutPageContext = React.createContext<AboutPageContextData>(null)
 
 const AboutPage = () => {
-  const {
-    allContentfulAboutPage,
-    allContentfulCompetitionCategory,
-  } = useStaticQuery(graphql`
+  const { allContentfulAboutPage, allContentfulCompetitionCategory } = useStaticQuery(graphql`
     query {
       allContentfulCompetitionCategory {
         edges {
@@ -147,7 +144,7 @@ const AboutPage = () => {
 
   const data: AboutPageContextData = {
     ...allContentfulAboutPage.edges[0].node,
-    categories: allContentfulCompetitionCategory.edges.map((edge) => edge.node),
+    categories: allContentfulCompetitionCategory.edges.map(edge => edge.node),
   }
   const heroImage = parseContentfulFileUrl(data.hero.image.fluid.src)
 
@@ -166,10 +163,7 @@ const AboutPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>INHOUSE</title>
-        <meta
-          name="facebook-domain-verification"
-          content="0xklyx0qcy9dxsx3cw5u7dw4swjweq"
-        />
+        <meta name="facebook-domain-verification" content="0xklyx0qcy9dxsx3cw5u7dw4swjweq" />
         <meta
           name="description"
           content="Sveriges främsta kommunikationstävling för Inhousebyråer"
@@ -177,12 +171,7 @@ const AboutPage = () => {
         <html lang="en" />
       </Helmet>
       <main style={{ position: 'relative' }}>
-        <Hero
-          title={data.hero.title}
-          body={data.hero.body.body}
-          image={heroImage}
-          size="small"
-        />
+        <Hero title={data.hero.title} body={data.hero.body.body} image={heroImage} size="small" />
         <ContentContainer>
           {data.aboutSection.map(renderAboutSection)}
           <Spacer exact={140} />
