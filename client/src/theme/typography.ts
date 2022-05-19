@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react'
 import styled, { css } from 'styled-components'
-import fonts from './fonts'
 import { breakpoints } from './mediaBreakpoints'
 
 export type ThemeColorProps = {
@@ -51,7 +50,7 @@ export const Title1 = styled.h1<TypographyProps>`
   font-family: 'Tide Sans 600';
   font-size: 8.4rem;
   ${breakpoints.mobile} {
-    font-size: 6rem;
+    font-size: 5rem;
   }
   ${typographyProps}
 `
