@@ -1,11 +1,9 @@
 import React, { FunctionComponent, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Input, Spacer, TextArea } from '../../theme/base'
-import { Body2 } from '../../theme/typography'
 import { submitNetlifyForm } from '../../util/helpers'
 import AcceptTerms from '../AcceptTerms/AcceptTerms'
 import Button from '../Button/Button'
-import Checkbox from '../Checkbox/Checkbox'
 
 type Props = {}
 
@@ -32,8 +30,8 @@ const SponsorForm: FunctionComponent<Props> = () => {
   }
 
   return (
-    <form name="sponsor" id="sponsor-form" onSubmit={handleSubmit(onSubmit)}>
-      <input type="hidden" name="form-name" value="sponsor" />
+    <form name="sponsor_form" id="sponsor-form" onSubmit={handleSubmit(onSubmit)}>
+      <input type="hidden" name="form-name" value="sponsor_form" />
       <Input
         placeholder="Företagsnamn"
         name="company_name"
