@@ -14,6 +14,7 @@ const invertedContainer = css`
 
 const disabledContainer = css`
   filter: blur(3px);
+  transition: all 0.2s ease-out;
   opacity: 0.4;
   pointer-events: none;
   user-select: none;

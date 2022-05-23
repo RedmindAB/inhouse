@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { Spacer } from '../../theme/base'
 import { Body1, Body2, Headline1 } from '../../theme/typography'
 import Button from '../Button/Button'
@@ -30,11 +30,21 @@ const ActionCard: FunctionComponent<Props> = ({
   disabled,
   disabledBody,
 }) => {
+  const [disabledShowing, setDisabledShowing] = useState(false)
+
   const textProps = inverted ? {} : { onAccent: true }
+
+  const handleClick = () => {
+    if (disabled && !disabledShowing) {
+      return setDisabledShowing(true)
+    }
+
+    button.onClick()
+  }
 
   return (
     <S.Wrapper>
-      <S.Container inverted={inverted} disabled={disabled}>
+      <S.Container inverted={inverted} disabled={disabledShowing}>
         <S.Inner>
           <S.TextContainer>
             <Headline1 uppercase {...textProps}>
@@ -48,7 +58,7 @@ const ActionCard: FunctionComponent<Props> = ({
               <Button
                 title={button.title}
                 variant={inverted ? 'default' : 'background'}
-                onClick={button.onClick}
+                onClick={handleClick}
                 disabled={button.disabled}
               />
               {button.disabled && button.comingSoon && (
@@ -67,7 +77,7 @@ const ActionCard: FunctionComponent<Props> = ({
           </>
         )}
       </S.Container>
-      {disabled && (
+      {disabledShowing && (
         <S.DisabledTextContainer>
           <Body1 bold>{disabledBody}</Body1>
         </S.DisabledTextContainer>
