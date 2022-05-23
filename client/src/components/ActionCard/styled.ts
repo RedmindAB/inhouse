@@ -4,6 +4,7 @@ import { breakpoints } from '../../theme/mediaBreakpoints'
 
 type Props = {
   inverted?: boolean
+  disabled?: boolean
 }
 
 const invertedContainer = css`
@@ -11,8 +12,28 @@ const invertedContainer = css`
   border: 2px solid var(--accent);
 `
 
+const disabledContainer = css`
+  filter: blur(3px);
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+`
+
+export const Wrapper = styled.div`
+  position: relative;
+`
+
+export const DisabledTextContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+`
+
 export const Container = styled(Card)<Props>`
   ${({ inverted }) => inverted && invertedContainer}
+  ${({ disabled }) => disabled && disabledContainer}
 `
 
 export const TextContainer = styled.div`
