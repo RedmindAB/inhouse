@@ -31,8 +31,8 @@ const AttendForm: FunctionComponent<Props> = () => {
   }
 
   return (
-    <form name="attend" id="attend-form" onSubmit={handleSubmit(onSubmit)}>
-      <input type="hidden" name="form-name" value="attend" />
+    <form name="attend_form" id="attend-form" onSubmit={handleSubmit(onSubmit)}>
+      <input type="hidden" name="form-name" value="attend_form" />
       <Input
         placeholder="Företagsnamn"
         name="company_name"

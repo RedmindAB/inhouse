@@ -61,15 +61,11 @@ const ParticipateForm: FunctionComponent<Props> = () => {
   }
 
   return (
-    <form
-      name="participate"
-      id="participate-form"
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form name="participate_form" id="participate-form" onSubmit={handleSubmit(onSubmit)}>
       <input
         type="hidden"
         name="form-name"
-        value="participate"
+        value="participate_form"
         disabled={loading}
         ref={register({})}
       />

@@ -48,25 +48,22 @@ type RegisterPageContextData = {
     }
   }[]
   attendSection: InformationBlock
-  attendButtonDisabled: boolean
+  attendCardDisabled: boolean
+  attendCardDisabledBody: string
   attendButtonLink: string
   competeSection: InformationBlock
-  competeButtonDisabled: boolean
+  competeCardDisabled: boolean
+  competeCardDisabledBody: string
   competeButtonLink: string
   sponsorSection: InformationBlock
-  sponsorButtonDisabled: boolean
+  sponsorCardDisabled: boolean
+  sponsorCardDisabledBody: string
   sponsorButtonLink: string
 }
 
 export const RegisterPageContext = React.createContext<RegisterPageContextData>(null)
 
 const ParticipatePage = ({ location }) => {
-  const [attendFormVisible, setAttendFormVisible] = React.useState(location.hash === '#attend')
-  const [participationFormVisible, setParticipationFormVisible] = React.useState(
-    location.hash === '#participate'
-  )
-  const [sponsorFormVisible, setSponsorFormVisible] = React.useState(location.hash === '#sponsor')
-
   const { allContentfulRegisterPage } = useStaticQuery(graphql`
     query {
       allContentfulRegisterPage {
@@ -92,8 +89,9 @@ const ParticipatePage = ({ location }) => {
                 description
               }
             }
-            attendButtonDisabled
             attendButtonLink
+            attendCardDisabled
+            attendCardDisabledBody
             competeSection {
               title
               buttonText
@@ -101,8 +99,9 @@ const ParticipatePage = ({ location }) => {
                 description
               }
             }
-            competeButtonDisabled
             competeButtonLink
+            competeCardDisabled
+            competeCardDisabledBody
             sponsorSection {
               title
               buttonText
@@ -110,8 +109,9 @@ const ParticipatePage = ({ location }) => {
                 description
               }
             }
-            sponsorButtonDisabled
             sponsorButtonLink
+            sponsorCardDisabled
+            sponsorCardDisabledBody
             hero {
               title
               body {
@@ -144,6 +144,16 @@ const ParticipatePage = ({ location }) => {
   `)
 
   const data: RegisterPageContextData = allContentfulRegisterPage.edges[0].node
+  const [attendFormVisible, setAttendFormVisible] = React.useState(
+    location.hash === '#attend' && !data.attendCardDisabled
+  )
+  const [participationFormVisible, setParticipationFormVisible] = React.useState(
+    location.hash === '#participate' && !data.competeCardDisabled
+  )
+  const [sponsorFormVisible, setSponsorFormVisible] = React.useState(
+    location.hash === '#sponsor' && !data.sponsorCardDisabled
+  )
+
   const heroImage = parseContentfulFileUrl(data.hero.image.fluid.src)
 
   const toggleAttendModalVisibility = () => {
@@ -214,11 +224,11 @@ const ParticipatePage = ({ location }) => {
             <ActionCard
               title={data.attendSection.title}
               body={parseContentfulBody(data.attendSection.description.description)}
+              disabled={data.attendCardDisabled}
+              disabledBody={data.attendCardDisabledBody}
               button={{
                 title: data.attendSection.buttonText,
                 onClick: onClickAttend,
-                disabled: data.attendButtonDisabled,
-                comingSoon: false,
               }}
             />
           </section>
@@ -228,11 +238,11 @@ const ParticipatePage = ({ location }) => {
               inverted
               title={data.competeSection.title}
               body={parseContentfulBody(data.competeSection.description.description)}
+              disabled={data.competeCardDisabled}
+              disabledBody={data.competeCardDisabledBody}
               button={{
                 title: data.competeSection.buttonText,
                 onClick: onClickCompete,
-                disabled: data.competeButtonDisabled,
-                comingSoon: true,
               }}
             />
           </section>
@@ -241,11 +251,11 @@ const ParticipatePage = ({ location }) => {
             <ActionCard
               title={data.sponsorSection.title}
               body={parseContentfulBody(data.sponsorSection.description.description)}
+              disabled={data.sponsorCardDisabled}
+              disabledBody={data.sponsorCardDisabledBody}
               button={{
                 title: data.sponsorSection.buttonText,
                 onClick: onClickSponsor,
-                disabled: data.sponsorButtonDisabled,
-                comingSoon: true,
               }}
               bottom={data.sponsorLogos?.length > 0 && <LogoBar />}
             />
@@ -260,26 +270,6 @@ const ParticipatePage = ({ location }) => {
             }}
           />
           <Spacer exact={140} />
-          {/* <section id="history">
-            {data.photoGallery?.length > 0 && (
-              <PhotoGallery
-                photos={data.photoGallery.map(
-                  ({
-                    fixed: { srcWebp: src, height, width },
-                    title,
-                    description,
-                  }) => ({
-                    height,
-                    width,
-                    src: parseContentfulFileUrl(src),
-                    title,
-                    description,
-                  })
-                )}
-              />
-            )}
-          </section>
-          <Spacer exact={80} /> */}
         </ContentContainer>
         <div style={{ background: 'var(--background)' }}>
           <Footer />
