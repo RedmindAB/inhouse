@@ -61,24 +61,32 @@ const IndexPage = () => {
                 }
               }
             }
-            goldLogos {
-              file {
-                url
+            bronzeLogos {
+              ... on ContentfulAsset {
+                file {
+                  url
+                }
               }
             }
             silverLogos {
-              file {
-                url
+              ... on ContentfulAsset {
+                file {
+                  url
+                }
               }
             }
-            bronzeLogos {
-              file {
-                url
+            goldLogos {
+              ... on ContentfulAsset {
+                file {
+                  url
+                }
               }
             }
             otherLogos {
-              file {
-                url
+              ... on ContentfulAsset {
+                file {
+                  url
+                }
               }
             }
             promoHeading

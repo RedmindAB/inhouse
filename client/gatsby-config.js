@@ -12,6 +12,19 @@ module.exports = {
     'gatsby-plugin-robots-txt',
     'gatsby-plugin-styled-components',
     {
+      resolve: 'gatsby-plugin-contentful-optional-fields',
+      options: {
+        optionalFields: {
+          ContentfulHomePage: {
+            bronzeLogos: 'Node',
+            silverLogos: 'Node',
+            goldLogos: 'Node',
+            otherLogos: 'Node',
+          },
+        },
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/assets/images`,

@@ -82,21 +82,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
       headline: String
       ctaLink: String
     }
-
-    type ContentfulHomePage implements Node {
-      silverLogos: [Asset]
-      goldLogos: [Asset]
-      bronzeLogos: [Asset]
-      otherLogos: [Asset]
-    }
   `
-
-  // type ContentfulHomePage implements Node {
-  //   goldLogos: [Asset]
-  //   silverLogos: [Asset]
-  //   bronzeLogos: [Asset]
-  //   otherLogos: [Asset]
-  // }
 
   createTypes(typeDefs)
 }
