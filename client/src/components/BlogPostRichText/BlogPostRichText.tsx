@@ -27,64 +27,38 @@ const BlockQuote = ({ text, author }) => (
 
 const options = {
   renderMark: {
-    [MARKS.BOLD]: (text) => (
-      <Body2 onAccent bold>
-        {text}
-      </Body2>
-    ),
-    [MARKS.ITALIC]: (text) => (
+    [MARKS.BOLD]: text => {
+      return (
+        <Body2 onAccent bold>
+          {text}
+        </Body2>
+      )
+    },
+    [MARKS.ITALIC]: text => (
       <Body2 onAccent italic>
         {text}
       </Body2>
     ),
-    [MARKS.UNDERLINE]: (text) => (
+    [MARKS.UNDERLINE]: text => (
       <Body2 onAccent underline>
         {text}
       </Body2>
     ),
   },
   renderNode: {
-    [BLOCKS.HEADING_1]: (node, children) => (
-      <Headline1 onAccent>{children}</Headline1>
-    ),
-    [BLOCKS.HEADING_2]: (node, children) => (
-      <Headline2 onAccent>{children}</Headline2>
-    ),
-    [BLOCKS.HEADING_3]: (node, children) => (
-      <Headline3 onAccent>{children}</Headline3>
-    ),
-    [BLOCKS.HEADING_4]: (node, children) => (
-      <Headline4 onAccent>{children}</Headline4>
-    ),
-    [BLOCKS.HEADING_5]: (node, children) => (
-      <Headline5 onAccent>{children}</Headline5>
-    ),
-    [BLOCKS.HEADING_6]: (node, children) => (
-      <Headline6 onAccent>{children}</Headline6>
-    ),
-    [BLOCKS.PARAGRAPH]: (node, children) => {
-      const { value } = node.content[0]
-
-      if (value.trim() === '') {
-        return (
-          <>
-            <br />
-            <br />
-          </>
-        )
-      }
-
-      return <Body2 onAccent>{children}</Body2>
-    },
+    [BLOCKS.HEADING_1]: (node, children) => <Headline1 onAccent>1:{children}</Headline1>,
+    [BLOCKS.HEADING_2]: (node, children) => <Headline2 onAccent>2:{children}</Headline2>,
+    [BLOCKS.HEADING_3]: (node, children) => <Headline3 onAccent>3:{children}</Headline3>,
+    [BLOCKS.HEADING_4]: (node, children) => <Headline4 onAccent>4:{children}</Headline4>,
+    [BLOCKS.HEADING_5]: (node, children) => <Headline5 onAccent>5:{children}</Headline5>,
+    [BLOCKS.HEADING_6]: (node, children) => <Headline6 onAccent>6:{children}</Headline6>,
+    [BLOCKS.PARAGRAPH]: (node, children) => <Body2 onAccent>{children}</Body2>,
     [BLOCKS.EMBEDDED_ENTRY]: (...props) => {
       console.log('props embedded_entry', props)
       return null
     },
-    [BLOCKS.EMBEDDED_ASSET]: (data) => (
-      <S.Image
-        src={parseContentfulFileUrl(data.file.file.url)}
-        alt={data.file.title}
-      />
+    [BLOCKS.EMBEDDED_ASSET]: data => (
+      <S.Image src={parseContentfulFileUrl(data.file.file.url)} alt={data.file.title} />
     ),
     [BLOCKS.QUOTE]: (node, children) => {
       const value = node.content[0].content[0].value
@@ -106,11 +80,11 @@ const BlogPostRichText: FunctionComponent<Props> = () => {
 
   const data = JSON.parse(raw)
 
-  data.content = data.content.map((node) => {
+  const parsedData = { ...data }
+
+  parsedData.content = data.content.map(node => {
     if (node.nodeType === BLOCKS.EMBEDDED_ASSET) {
-      const file = references.find(
-        (ref) => ref.contentful_id === node.data.target.sys.id
-      )
+      const file = references.find(ref => ref.contentful_id === node.data.target.sys.id)
 
       return { ...node, file }
     }
@@ -118,7 +92,7 @@ const BlogPostRichText: FunctionComponent<Props> = () => {
     return node
   })
 
-  return <S.Container>{documentToReactComponents(data, options)}</S.Container>
+  return <S.Container>{documentToReactComponents(parsedData, options)}</S.Container>
 }
 
 export default BlogPostRichText

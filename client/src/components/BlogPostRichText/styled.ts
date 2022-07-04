@@ -13,7 +13,9 @@ export const Container = styled.article`
   }
 
   p {
+    min-height: 15px;
     line-height: 1.5;
+    margin-bottom: 10px;
   }
 `
 
