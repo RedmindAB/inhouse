@@ -46,12 +46,12 @@ const options = {
     ),
   },
   renderNode: {
-    [BLOCKS.HEADING_1]: (node, children) => <Headline1 onAccent>1:{children}</Headline1>,
-    [BLOCKS.HEADING_2]: (node, children) => <Headline2 onAccent>2:{children}</Headline2>,
-    [BLOCKS.HEADING_3]: (node, children) => <Headline3 onAccent>3:{children}</Headline3>,
-    [BLOCKS.HEADING_4]: (node, children) => <Headline4 onAccent>4:{children}</Headline4>,
-    [BLOCKS.HEADING_5]: (node, children) => <Headline5 onAccent>5:{children}</Headline5>,
-    [BLOCKS.HEADING_6]: (node, children) => <Headline6 onAccent>6:{children}</Headline6>,
+    [BLOCKS.HEADING_1]: (node, children) => <Headline1 onAccent>{children}</Headline1>,
+    [BLOCKS.HEADING_2]: (node, children) => <Headline2 onAccent>{children}</Headline2>,
+    [BLOCKS.HEADING_3]: (node, children) => <Headline3 onAccent>{children}</Headline3>,
+    [BLOCKS.HEADING_4]: (node, children) => <Headline4 onAccent>{children}</Headline4>,
+    [BLOCKS.HEADING_5]: (node, children) => <Headline5 onAccent>{children}</Headline5>,
+    [BLOCKS.HEADING_6]: (node, children) => <Headline6 onAccent>{children}</Headline6>,
     [BLOCKS.PARAGRAPH]: (node, children) => <Body2 onAccent>{children}</Body2>,
     [BLOCKS.EMBEDDED_ENTRY]: (...props) => {
       console.log('props embedded_entry', props)
