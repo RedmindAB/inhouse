@@ -12,6 +12,7 @@ import Inhouse10Years from '../components/Inhouse10Years'
 import News from '../components/News'
 import SponsorsList from '../components/SponsorsList'
 import '../css/index.css'
+import usePageReload from '../hooks/usePageReload'
 import { ContentContainer, Spacer } from '../theme/base'
 import { parseContentfulBody } from '../util/contentful'
 import { parseContentfulFileUrl } from '../util/helpers'
@@ -37,6 +38,7 @@ export const HomePageContext = React.createContext<HomePageContextData>(null)
 
 const IndexPage = () => {
   const navigate = useNavigate()
+  usePageReload()
 
   const { allContentfulHomePage, allContentfulRegisterPage } = useStaticQuery(graphql`
     query {

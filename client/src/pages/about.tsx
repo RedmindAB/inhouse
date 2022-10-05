@@ -11,6 +11,7 @@ import InformationBlock from '../components/InformationBlock/InformationBlock'
 import ParticipateHowItWorks from '../components/ParticipateHowItWorks'
 import ParticipateSummary from '../components/ParticipateSummary'
 import '../css/index.css'
+import usePageReload from '../hooks/usePageReload'
 import { ContentContainer, Spacer } from '../theme/base'
 import { parseContentfulBody } from '../util/contentful'
 import { parseContentfulFileUrl } from '../util/helpers'
@@ -59,6 +60,7 @@ export type AboutPageDataCategory = {
 export const AboutPageContext = React.createContext<AboutPageContextData>(null)
 
 const AboutPage = () => {
+  usePageReload()
   const { allContentfulAboutPage, allContentfulCompetitionCategory } = useStaticQuery(graphql`
     query {
       allContentfulCompetitionCategory {

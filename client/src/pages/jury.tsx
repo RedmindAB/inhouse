@@ -7,6 +7,7 @@ import Header from '../components/Header/Header'
 import JuryHero from '../components/JuryHero/JuryHero'
 import JurySection from '../components/JurySection'
 import '../css/index.css'
+import usePageReload from '../hooks/usePageReload'
 import { ContentContainer, Spacer } from '../theme/base'
 
 export type JuryPageData = {
@@ -22,6 +23,7 @@ export type JuryPageData = {
 export const JuryPageContext = React.createContext<JuryPageData>(null)
 
 const JuryPage = () => {
+  usePageReload()
   const { allContentfulJuryMember } = useStaticQuery(graphql`
     query {
       allContentfulJuryMember {
@@ -40,9 +42,7 @@ const JuryPage = () => {
     }
   `)
 
-  const data: JuryPageData = allContentfulJuryMember.edges.map(
-    (edge) => edge.node
-  )
+  const data: JuryPageData = allContentfulJuryMember.edges.map(edge => edge.node)
 
   return (
     <JuryPageContext.Provider value={data}>
@@ -54,10 +54,7 @@ const JuryPage = () => {
           name="description"
           content="Sveriges främsta kommunikationstävling för Inhousebyråer"
         />
-        <meta
-          name="facebook-domain-verification"
-          content="0xklyx0qcy9dxsx3cw5u7dw4swjweq"
-        />
+        <meta name="facebook-domain-verification" content="0xklyx0qcy9dxsx3cw5u7dw4swjweq" />
         <html lang="en" />
       </Helmet>
       <main style={{ position: 'relative' }}>

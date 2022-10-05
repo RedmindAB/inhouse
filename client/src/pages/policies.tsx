@@ -4,10 +4,12 @@ import Footer from '../components/Footer'
 import GDPRBanner from '../components/GDPRBanner'
 import Header from '../components/Header/Header'
 import '../css/index.css'
+import usePageReload from '../hooks/usePageReload'
 import { ContentContainer, Spacer, TextContainer } from '../theme/base'
 import { Body2, Headline1 } from '../theme/typography'
 
 const PoliciesPage = () => {
+  usePageReload(120)
   return (
     <>
       <Header />

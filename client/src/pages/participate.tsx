@@ -12,6 +12,7 @@ import LogoBar from '../components/LogoBar/LogoBar'
 import ParticipateModal from '../components/ParticipateModal/ParticipateModal'
 import SponsorModal from '../components/SponsorModal/SponsorModal'
 import '../css/index.css'
+import usePageReload from '../hooks/usePageReload'
 import { ContentContainer, Spacer } from '../theme/base'
 import { parseContentfulBody } from '../util/contentful'
 import { downloadRemoteFile, parseContentfulFileUrl } from '../util/helpers'
@@ -64,6 +65,7 @@ type RegisterPageContextData = {
 export const RegisterPageContext = React.createContext<RegisterPageContextData>(null)
 
 const ParticipatePage = ({ location }) => {
+  usePageReload()
   const { allContentfulRegisterPage } = useStaticQuery(graphql`
     query {
       allContentfulRegisterPage {
